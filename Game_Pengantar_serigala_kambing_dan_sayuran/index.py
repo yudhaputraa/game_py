@@ -1,14 +1,5 @@
 import os
 
-def print_state(sisi_kanan, sisi_kiri, perahu):
-    print(f"Sisi Awal   : {sisi_kanan}")
-    print(f"Sisi Akhir  : {sisi_kiri}")
-    print(f"Perahu      : {perahu}")
-    print("\n")
-
-#def pindah_keperahu():
-    
-
 def main():
     sisi_kanan = {'domba': 1, 'serigala': 1, 'sayuran': 1}
     perahu = {'tumpangan': '' , 'posisi': 'kanan'}
@@ -17,6 +8,10 @@ def main():
     while True:
         os.system('cls')
         tampil(sisi_kanan,perahu,sisi_kiri)
+        print("Sisi kiri:", sisi_kiri)
+        print("Sisi kanan:", sisi_kanan)
+        print("perahu:", perahu)
+
 
         if is_game_win(sisi_kiri):
             print("Anda menang!")
@@ -26,14 +21,14 @@ def main():
         print("1. Tepih ke Perahu")
         print("2. berangkat")
         if (not perahu['tumpangan'] == ''):
-            print("3. perahu ke tepi")
+            print("3. Taruh ke tepi")
         pilihan = input("Pilih Nomer Berapa? : ")
 
         if pilihan == '1':
             os.system('cls')
             tampil(sisi_kanan,perahu,sisi_kiri)
             item = input("Apa yang ingin Anda bawa ke perahu? : ")
-            pengakutan(sisi_kanan,perahu,sisi_kiri,item)
+            tepi(sisi_kanan,perahu,sisi_kiri,item)
         elif pilihan == '2':
             posisi_perahu(perahu)
             os.system('cls')
@@ -42,7 +37,7 @@ def main():
                 print("Anda Kalah!")
                 break
         elif pilihan == '3':
-            pass
+            perahu_ke_tepi(sisi_kanan,perahu,sisi_kiri)
 
 def is_game_win(sisi_kiri):
     return sisi_kiri['serigala'] == 1 and sisi_kiri['domba'] == 1 and sisi_kiri['sayuran'] == 1
@@ -61,13 +56,14 @@ def tampil(sisi_kanan,perahu,sisi_kiri):
         print("------------------------------------------------------")
         if sisi_kanan['serigala'] == 1:
             print("|-----------|                  /------\  |-----------|")
-            print("|           |                 /        \ |  serigala |") 
+            print("|           |                 /        \ | serigala  |") 
         elif sisi_kiri['serigala'] == 1:
             print("|-----------|                  /------\  |-----------|")
             print("| serigala  |                 /        \ |           |")
         else:
             print("|-----------|                  /------\  |-----------|")
             print("|           |                 /        \ |           |") 
+            
         if sisi_kanan['domba'] == 1:
             print("|-----------|                 | Petani | |-----------|")
             print("|           |                 |        | |   domba   |")
@@ -150,12 +146,7 @@ def posisi_perahu(perahu):
         perahu['posisi'] = 'kanan'
         return perahu
     
-def pengakutan(sisi_kanan,perahu,sisi_kiri,item):
-    # keys_kanan = sisi_kanan.keys()
-    # keys_list_kanan = list(keys_kanan)
-    # keys_kiri = sisi_kiri.keys()
-    # keys_list_kiri = list(keys_kiri)
-
+def tepi(sisi_kanan,perahu,sisi_kiri,item):
     if perahu['posisi'] == 'kanan':
         if 'domba' == item:
             perahu['tumpangan'] = 'domba'
@@ -167,7 +158,7 @@ def pengakutan(sisi_kanan,perahu,sisi_kiri,item):
             return perahu,sisi_kanan
         elif 'sayuran' == item:
             perahu['tumpangan'] = 'sayuran'
-            sisi_kanan['serigala'] = 0
+            sisi_kanan['sayuran'] = 0
             return perahu,sisi_kanan
     
     if perahu['posisi'] == 'kiri':
@@ -181,7 +172,36 @@ def pengakutan(sisi_kanan,perahu,sisi_kiri,item):
             return perahu,sisi_kiri
         elif 'sayuran' == item:
             perahu['tumpangan'] = 'sayuran'
-            sisi_kiri['serigala'] = 0
+            sisi_kiri['sayuran'] = 0
+            return perahu,sisi_kiri
+
+def perahu_ke_tepi(sisi_kanan,perahu,sisi_kiri):
+    if perahu['posisi'] == 'kanan':
+        if perahu['tumpangan'] == 'domba':
+            perahu['tumpangan'] = ''
+            sisi_kanan['domba'] = 1
+            return perahu,sisi_kanan
+        elif perahu['tumpangan'] == 'serigala':
+            perahu['tumpangan'] = ''
+            sisi_kanan['serigala'] = 1
+            return perahu,sisi_kanan
+        elif perahu['tumpangan'] == 'sayuran':
+            perahu['tumpangan'] = ''
+            sisi_kanan['sayuran'] = 1
+            return perahu,sisi_kanan
+    
+    if perahu['posisi'] == 'kiri':
+        if perahu['tumpangan'] == 'domba':
+            perahu['tumpangan'] = ''
+            sisi_kiri['domba'] = 1
+            return perahu,sisi_kiri
+        elif perahu['tumpangan'] == 'serigala':
+            perahu['tumpangan'] = ''
+            sisi_kiri['serigala'] = 1
+            return perahu,sisi_kiri
+        elif perahu['tumpangan'] == 'sayuran':
+            perahu['tumpangan'] = ''
+            sisi_kiri['sayuran'] = 1
             return perahu,sisi_kiri
 
 
