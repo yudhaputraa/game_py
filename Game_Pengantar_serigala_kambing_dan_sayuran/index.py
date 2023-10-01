@@ -86,11 +86,25 @@ def tampil(sisi_kanan,perahu,sisi_kiri):
             print("|           |                 \        / |  sayuran  |")
             print("|-----------|                  \------/  |-----------|")
         elif sisi_kiri['sayuran'] == 1:
-            print("|-----------|                 |        | |-----------|")
+            if perahu['tumpangan'] == 'serigala':
+                print("|-----------|                 |serigala| |-----------|")
+            elif perahu['tumpangan'] == 'domba':
+                print("|-----------|                 | domba  | |-----------|")
+            elif perahu['tumpangan'] == 'sayuran':
+                print("|-----------|                 |sayuran | |-----------|")
+            else:
+                print("|-----------|                 |        | |-----------|")
             print("|  sayuran  |                 \        / |           |")
             print("|-----------|                  \------/  |-----------|")
         else:
-            print("|-----------|                 |        | |-----------|")
+            if perahu['tumpangan'] == 'serigala':
+                print("|-----------|                 |serigala| |-----------|")
+            elif perahu['tumpangan'] == 'domba':
+                print("|-----------|                 | domba  | |-----------|")
+            elif perahu['tumpangan'] == 'sayuran':
+                print("|-----------|                 |sayuran | |-----------|")
+            else:
+                print("|-----------|                 |        | |-----------|")
             print("|           |                 \        / |           |")
             print("|-----------|                  \------/  |-----------|")
         print("------------------------------------------------------")
@@ -129,11 +143,25 @@ def tampil(sisi_kanan,perahu,sisi_kiri):
             print("|           | \        /                 |  sayuran  |")
             print("|-----------|  \------/                  |-----------|")
         elif sisi_kiri['sayuran'] == 1:
-            print("|-----------| |        |                 |-----------|")
+            if perahu['tumpangan'] == 'serigala':
+                print("|-----------| |serigala|                 |-----------|")
+            elif perahu['tumpangan'] == 'domba':
+                print("|-----------| | domba  |                 |-----------|")
+            elif perahu['tumpangan'] == 'sayuran':
+                print("|-----------| |sayuran |                 |-----------|")
+            else:
+                print("|-----------| |        |                 |-----------|")
             print("|  sayuran  | \        /                 |           |")
             print("|-----------|  \------/                  |-----------|")
         else:
-            print("|-----------| |        |                 |-----------|")
+            if perahu['tumpangan'] == 'serigala':
+                print("|-----------| |serigala|                 |-----------|")
+            elif perahu['tumpangan'] == 'domba':
+                print("|-----------| | domba  |                 |-----------|")
+            elif perahu['tumpangan'] == 'sayuran':
+                print("|-----------| |sayuran |                 |-----------|")
+            else:
+                print("|-----------| |        |                 |-----------|")
             print("|           | \        /                 |           |")
             print("|-----------|  \------/                  |-----------|")
         print("------------------------------------------------------")
