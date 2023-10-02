@@ -8,20 +8,26 @@ def main():
     while True:
         os.system('cls')
         tampil(sisi_kanan,perahu,sisi_kiri)
-        print("Sisi kiri:", sisi_kiri)
-        print("Sisi kanan:", sisi_kanan)
-        print("perahu:", perahu)
-
 
         if is_game_win(sisi_kiri):
-            print("Anda menang!")
+            os.system('cls')
+            tampil(sisi_kanan,perahu,sisi_kiri)
+            print("|                                                    |")
+            print("|                  Anda menang!                      |")
+            print("|                                                    |")
+            print("------------------------------------------------------")
             break
         
-        print("Menu :")
-        print("1. Tepih ke Perahu")
-        print("2. berangkat")
+        print("------------------------------------------------------")
+        print("| Menu :                                             |")
+        print("------------------------------------------------------")
+        print("| 1. Tepih ke Perahu                                 |")
+        print("| 2. berangkat                                       |")
         if (not perahu['tumpangan'] == ''):
-            print("3. Taruh ke tepi")
+            print("| 3. Taruh ke tepi                                   |")
+            print("------------------------------------------------------")
+        else:
+            print("------------------------------------------------------")
         pilihan = input("Pilih Nomer Berapa? : ")
 
         if pilihan == '1':
@@ -34,7 +40,12 @@ def main():
             os.system('cls')
             tampil(sisi_kanan,perahu,sisi_kiri)
             if is_game_loss(sisi_kiri,sisi_kanan):
-                print("Anda Kalah!")
+                os.system('cls')
+                tampil(sisi_kanan,perahu,sisi_kiri)
+                print("|                                                    |")
+                print("|                   Anda Kalah!                      |")
+                print("|                                                    |")
+                print("------------------------------------------------------")
                 break
         elif pilihan == '3':
             perahu_ke_tepi(sisi_kanan,perahu,sisi_kiri)
@@ -53,6 +64,8 @@ def is_game_loss(sisi_kiri, sisi_kanan):
 
 def tampil(sisi_kanan,perahu,sisi_kiri):
     if perahu['posisi'] == 'kanan':
+        print("------------------------------------------------------")
+        print("|           Game Seriga, domba, Dan Sayuran          |")
         print("------------------------------------------------------")
         if sisi_kanan['serigala'] == 1:
             print("|-----------|                  /------\  |-----------|")
@@ -110,6 +123,8 @@ def tampil(sisi_kanan,perahu,sisi_kiri):
         print("------------------------------------------------------")
 
     if perahu['posisi'] == 'kiri':
+        print("------------------------------------------------------")
+        print("|           Game Seriga, domba, Dan Sayuran          |")
         print("------------------------------------------------------")
         if sisi_kanan['serigala'] == 1:
             print("|-----------|  /------\                  |-----------|")
